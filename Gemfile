@@ -76,3 +76,4 @@ end
 
 # Add devise
 gem 'devise'
+gem 'responders'
