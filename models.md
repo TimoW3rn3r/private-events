@@ -8,7 +8,7 @@ password:string
 
 has_many :events
 has_many :invitations
-has_many :attend_events, through: :invitations, source: :event
+has_many :attended_events, through: :invitations, source: :event
 ```
 
 Event

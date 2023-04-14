@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
 
   has_many :events
+  has_many :invitations
+  has_many :attended_events, through: :invitations, source: :event
 
   def fullname
     "#{first_name} #{last_name}"
