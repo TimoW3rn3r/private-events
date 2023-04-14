@@ -1,9 +1,5 @@
 <h2>All Events</h2>
 
-<ul>
-  <% @events.each do |event| %>
-    <li><%= event.name %></li>
-  <% end %>
-</ul>
+<%= render "events" %>
 
 <%= link_to "Create New", new_event_path %>

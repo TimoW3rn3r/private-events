@@ -1,7 +1,3 @@
 <h2>Events for <%= @user.fullname %></h2>
 
-<ul>
-  <% @events.each do |event| %>
-    <li><%= event.name %></li>
-  <% end %>
-</ul>
+<%= render "events" %>
