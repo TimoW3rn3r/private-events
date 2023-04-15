@@ -5,10 +5,9 @@ class InvitationsController < ApplicationController
 
   def create
     event_id = params[:invitation][:event_id]
-    user_id = params[:invitation][:event_id]
 
     if Invitation.where(invite_params).any?
-      flash[:alert] = "Already attending this event"
+      flash[:alert] = 'Already attending this event'
       redirect_to event_path(event_id) and return
     end
 

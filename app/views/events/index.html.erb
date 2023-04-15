@@ -1,5 +1,15 @@
 <h2>All Events</h2>
 
-<%= render "events" %>
+<%= render partial: "events",
+locals: {
+  table_name: "Past Events",
+  events: Event.past
+} %>
+
+<%= render partial: "events",
+locals: {
+  table_name: "Upcoming Events",
+  events: Event.upcoming
+} %>
 
 <%= link_to "Create New", new_event_path %>
