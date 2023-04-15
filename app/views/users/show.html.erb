@@ -1,3 +1,11 @@
 <h2>Events for <%= @user.fullname %></h2>
 
 <%= render "events" %>
+
+<h4>Attended Events</h4>
+
+<% @user.attended_events.each do |event| %>
+  <div>
+    <%= link_to event.name, event %>
+  </div>
+<% end %>
