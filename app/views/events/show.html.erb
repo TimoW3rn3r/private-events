@@ -21,7 +21,10 @@
   <% end %>
 </ul>
 
-<%= form_with url: invitations_path, method: :post do |form| %>
-  <input type="hidden" id="invitation_event_id" name="invitation[event][id]" value=<%= @event.id %>>
-  <%= form.submit "Attend" %>
+<% if current_user %>
+  <%= form_with url: invitations_path, scope: :invitation, method: :post do |form| %>
+    <%= form.hidden_field :event_id, value: @event.id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.submit "Attend" %>
+  <% end %>
 <% end %>

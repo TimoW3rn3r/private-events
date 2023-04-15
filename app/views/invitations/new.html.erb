@@ -1,6 +1,10 @@
 <h2>Join Event</h2>
 
 <%= form_with model: @invitation, method: :post do |form| %>
-  <%= form.collection_select 'event[id]', Event.order(:name), :id, :name %><br>
+  <%= form.label :event_id %>
+  <%= form.collection_select :event_id, Event.order(:name), :id, :name %><br>
+
+  <%= form.label :user_id %>
+  <%= form.collection_select :user_id, User.order(:fullname), :id, :fullname %><br>
   <%= form.submit "Attend" %>
 <% end %>
