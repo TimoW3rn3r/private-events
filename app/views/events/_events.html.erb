@@ -9,12 +9,6 @@
     <th>
       Location
     </th>
-    <th>
-      Date
-    </th>
-    <th>
-      Time
-    </th>
   </tr>
 
   <% @events.each do |event| %>
@@ -23,16 +17,10 @@
         <%= link_to event.name, event %>
       </td>
       <td>
-        <%= event.creator.fullname %>
+        <%= link_to event.creator.fullname, event.creator %>
       </td>
       <td>
         <%= event.location %>
-      </td>
-      <td>
-        <%= event.date %>
-      </td>
-      <td>
-        <%= event.time %>
       </td>
     </tr>
   <% end %>
