@@ -2,10 +2,20 @@
 
 <%= render "events" %>
 
-<h4>Attended Events</h4>
+<h3>Attended Events</h3>
 
+<h4>Past Events</h4>
 <ul>
-  <% @user.attended_events.each do |event| %>
+  <% @user.attended_events.where(date: ..Time.now).each do |event| %>
+    <li>
+      <%= link_to event.name, event %>
+    </li>
+  <% end %>
+</ul>
+
+<h4>Upcoming Events</h4>
+<ul>
+  <% @user.attended_events.where(date: Time.now..).each do |event| %>
     <li>
       <%= link_to event.name, event %>
     </li>
