@@ -5,8 +5,14 @@ class InvitationsController < ApplicationController
 
   def create
     event_id = params[:invitation][:event_id]
-    @invitation = Invitation.new(invite_params)
+    user_id = params[:invitation][:event_id]
 
+    if Invitation.where(invite_params).any?
+      flash[:alert] = "Already attending this event"
+      redirect_to event_path(event_id) and return
+    end
+
+    @invitation = Invitation.new(invite_params)
     if @invitation.save
       redirect_to event_path(event_id)
     else

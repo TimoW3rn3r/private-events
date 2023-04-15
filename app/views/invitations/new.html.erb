@@ -1,6 +1,6 @@
 <h2>Join Event</h2>
 
-<%= form_with model: @invitation, method: :post do |form| %>
+<%= form_with model: @invitation, scope: :invitation, method: :post do |form| %>
   <%= form.label :event_id %>
   <%= form.collection_select :event_id, Event.order(:name), :id, :name %><br>
 

@@ -12,6 +12,10 @@
   </head>
 
   <body>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: name %>
+    <% end %>
+
     <main class="container mx-auto mt-28 px-5 flex flex-col prose">
       <%= yield %>
     </main>
