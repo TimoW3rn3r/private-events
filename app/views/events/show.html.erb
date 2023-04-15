@@ -13,6 +13,10 @@
 <%= @event.time %>
 
 <h4>Attendees</h4>
-<% @event.attendees.each do |attendee| %>
-  <%= attendee.fullname %>
-<% end %>
+<ul>
+  <% @event.attendees.each do |attendee| %>
+    <li>
+      <%= link_to attendee.fullname, attendee %>
+    </li>
+  <% end %>
+</ul>
