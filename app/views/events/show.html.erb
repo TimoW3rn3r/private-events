@@ -20,3 +20,8 @@
     </li>
   <% end %>
 </ul>
+
+<%= form_with url: invitations_path, method: :post do |form| %>
+  <input type="hidden" id="invitation_event_id" name="invitation[event][id]" value=<%= @event.id %>>
+  <%= form.submit "Attend" %>
+<% end %>
