@@ -1,0 +1,7 @@
+<% if object.errors.any? %>
+  <div class="error_explanation">
+    <div id="error">
+      <%= object.errors.first.full_message %>
+    </div>
+  </div>
+<% end %>

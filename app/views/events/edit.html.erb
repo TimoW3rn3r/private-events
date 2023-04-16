@@ -1,8 +1,8 @@
 <%= render partial: "shared/errors", locals: { object: @event } %>
 
-<h2>New Event</h2>
+<h2>Edit Event</h2>
 
-<%= form_with model: @event, method: :post do |form| %>
+<%= form_with model: @event do |form| %>
   <div>
     <%= form.label :name, "Event Name" %><br>
     <%= form.text_field :name %>
