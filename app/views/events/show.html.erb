@@ -14,26 +14,43 @@
 
 <h4>Attendees</h4>
 <ul>
-  <% @event.attendees.each do |attendee| %>
+  <% @attending = false %>
+  <% @event.invitations.each do |invitation| %>
+    <% attendee = invitation.user %>
     <li>
       <%= link_to attendee.fullname, attendee %>
+      <% if attendee == current_user %>
+        <% @attending = true %>
+        <% @current_user_invitation = invitation %>
+      <% end %>
     </li>
   <% end %>
 </ul>
 
 <% if current_user %>
 
-  <%= form_with url: invitations_path, scope: :invitation, method: :post do |form| %>
-    <%= form.hidden_field :event_id, value: @event.id %>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-    <%= form.submit "Attend" %>
+  <% if @attending %>
+    <%= link_to "Unattend",
+    @current_user_invitation,
+    data: {
+      turbo_method: :delete,
+      confirm: "Are you sure?"
+    } %>
+  <% else %>
+    <%= form_with url: invitations_path, scope: :invitation, method: :post do |form| %>
+      <%= form.hidden_field :event_id, value: @event.id %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <%= form.submit "Attend" %>
+    <% end %>
   <% end %>
 
   <% if current_user == @event.creator %>
     <%= link_to "Edit Event", edit_event_path %>
-    <%= link_to "Delete Event", @event, "data": {
+    <%= link_to "Delete Event",
+    @event,
+    data: {
       turbo_method: :delete,
-      turbo_confirm: "Are you sure?",
+      turbo_confirm: "Are you sure?"
     } %>
   <% end %>
 <% end %>
