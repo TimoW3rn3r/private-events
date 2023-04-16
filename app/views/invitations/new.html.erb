@@ -1,12 +1,12 @@
 <%= render partial: "shared/errors", locals: { object: @invitation } %>
 
-<h2>Join Event</h2>
+<h2>Invite to the Event</h2>
 
 <%= form_with model: @invitation, scope: :invitation, method: :post do |form| %>
   <%= form.label :event_id %>
-  <%= form.collection_select :event_id, Event.order(:name), :id, :name %><br>
+  <%= form.collection_select :event_id, @events.order(:name), :id, :name %><br>
 
   <%= form.label :user_id %>
   <%= form.collection_select :user_id, User.order(:fullname), :id, :fullname %><br>
-  <%= form.submit "Attend" %>
+  <%= form.submit "Invite User" %>
 <% end %>
